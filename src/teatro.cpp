@@ -6,7 +6,7 @@
 using namespace std;
 
 Teatro::Teatro(int id, char *nombre){
-	cout<<"Constructor teatro"<<endl;
+	//cout<<"Constructor teatro"<<endl;
 	
 	this -> id = id;
 	int bytesToCopy = strlen(nombre)% NOMBRE_SIZE;
@@ -15,5 +15,6 @@ Teatro::Teatro(int id, char *nombre){
 }
 
 void Teatro::print(){
-	cout<<"id: "<<this -> id<<" Nombre: "<<this -> nombre <<endl;
+	cout<<"\n"<<"ID: "<<this -> id<<endl;
+	cout<<"Nombre del Teatro: "<<this->nombre<<endl;
 }

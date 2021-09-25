@@ -7,7 +7,7 @@ using namespace std;
 
 int main(){
 	
-	cout<< "Building database"<<endl;
+	cout<<"\nBuilding database"<<endl;
 
 	char nombre1[NOMBRE_SIZE] = "Teatro Insurgentes";
 	Teatro teatro(1, nombre1);
@@ -20,7 +20,7 @@ int main(){
 	Teatro teatros[2] = {teatro, *ptrTeatro};
 
 	TeatroDb teatro_db;
-	cout<<"Guardando datos"<<endl;
+	cout<<"\n"<<"...Datos guardados..."<<endl;
 	teatro_db.guardar_teatro(teatros,2);
 
 	return 0;
