@@ -5,12 +5,20 @@ Sistemas que va a mostrar al usuario las posibles opciones de teatros que hay en
 ## Como obtener el codigo
 
 ```shell
+#Para usuarios que no sean propietarios o que no tengan configurado la ssh key
 $ git clone https://github.com/KevyJQ/teatro_db.git
 $ cd teatro_db
+```
+Si tienes configurado la llave ssh, utiliza este comando
+
+```shell
+#Para el propietario y tienes la llave ssh
+$ git clone git@github.com:KevyJQ/teatro_db.git 
 ```
 
 Este comando create un directory llamado `teatro_db`.
 
+> Nota: informacion de como configurar la llave ssh esta https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent 
 
 ## Como ver informacion del projecto
 
