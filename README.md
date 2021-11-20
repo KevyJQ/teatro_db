@@ -66,6 +66,9 @@ Changes to be committed:
 
     modified:   README.md
     new file:   src/teatro_algoritmos.h
+
+#Guarda cambios en repositorio local
+$ git commit
 ```
 
 Haz push de tus cambios
