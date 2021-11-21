@@ -24,5 +24,5 @@ void TeatroDb::guardar_teatro(Teatro teatros[],int size){
 		cout<<"Error mientras cerraba el archivo"<<endl;
 		exit(-1);
 	}
-
 }
+
