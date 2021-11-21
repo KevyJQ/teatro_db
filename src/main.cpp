@@ -66,7 +66,7 @@ int main(){
         cout<<"\n..........................";
         cout<<"\n\tHasta la proxima..";
         cout<<"\n..........................\n\n";
-        return -1;
+        return 0;
       default:
         cout<<"Esa opcion no existe..\n";
     }   
@@ -81,7 +81,7 @@ int main(){
       cout<<"\n\tHasta la proxima..";
       cout<<"\n..........................\n\n";
       T = false;
-      return -1;
+      return 0;
     }
   }
 
