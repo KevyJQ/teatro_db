@@ -1,3 +1,4 @@
+
 # Construye el projecto
 #
 # Para construir el projecto ejecuta
@@ -18,6 +19,8 @@ C_FILES := teatro.cpp
 C_FILES += teatro_db.cpp
 C_FILES += main.cpp 
 C_FILES += teatro_search.cpp
+C_FILES += teatro_menu.cpp
+C_FILES += teatro_servicio.cpp
 
 # Utiliza TABS en las reglas
 all:
