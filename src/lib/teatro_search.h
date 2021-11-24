@@ -22,3 +22,4 @@ class TeatroSearch {
       Teatro teatros[], int size, int id);
 };
 #endif //TEATRO_SEARCH_H
+
