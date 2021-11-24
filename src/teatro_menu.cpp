@@ -25,7 +25,8 @@ void TeatroMenu::mostrar_menu(){
     cout<< "Porque opcion deseas buscar\n"
           "1. Busqueda por ID\n"
           "2. Busqueda por Nombre\n"
-          "3. Salir\n";
+          "3. Mostrar todos los teatros\n"
+          "4. Salir\n";
 }
 
 void TeatroMenu::procesar(){
@@ -50,7 +51,10 @@ void TeatroMenu::procesar(){
         this->teatroServicio.buscarPorId();
         break;
       case BUSQUEDA_POR_NOMBRE:
-        this->teatroServicio.buscarPorNombre();
+        this->teatroServicio.buscarPorNombre(); //Refereciar miembros de la clase
+        break;
+      case MOSTRAR_ALL_TEATROS:
+        this->teatroServicio.mostrar_all_teatros();
         break;
       case SALIR:
         cout<<"\n..........................";

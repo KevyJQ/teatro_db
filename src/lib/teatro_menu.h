@@ -12,6 +12,7 @@ class TeatroMenu{
     enum Opcion {
       BUSQUEDA_POR_ID = 1,
       BUSQUEDA_POR_NOMBRE,
+      MOSTRAR_ALL_TEATROS,
       SALIR
     };
     bool validar_opcion(int);
@@ -20,5 +21,5 @@ class TeatroMenu{
     void mostrar_menu();
     void procesar(); 
 };
-#endif // TEATRO_MENU_H
 
+#endif // TEATRO_MENU_H

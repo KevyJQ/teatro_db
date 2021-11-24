@@ -70,3 +70,6 @@ int TeatroSearch::search_by_id(Teatro teatros[], int size, int id) {
   return this->binary_search_recursive(teatros, size, id);
 }
 
+
+
+
