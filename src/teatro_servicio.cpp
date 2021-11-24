@@ -55,7 +55,7 @@ void TeatroServicio::buscarPorId(){
   // Convertir un vector a un puntero a un arreglo.
   Teatro *teatrosPtr = this->teatros.data();//Hacemos la conversion
 
-  int indexTeatro = ts.search_by_id(teatrosPtr, sizeArray, idToSearch);
+  int indexTeatro = this->ts.search_by_id(teatrosPtr, sizeArray, idToSearch);
   if (indexTeatro != -1) {
     cout << "Teatro encontrado en indice " << indexTeatro << endl;
     this->teatros[indexTeatro].print();
