@@ -4,6 +4,7 @@
 #include "teatro_search.h"
 #include "teatro.h"
 #include "teatro_db.h"
+#include "teatro_sort.h"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ void TeatroServicio::populateTeatros(){
   // Usar teatro_db para popule the teatros.
   TeatroDb teatro_db;
   teatro_db.populate_teatros(&this->teatros);
+  TeatroSort teatroSort;
+  teatroSort.bubble_sort(&this->teatros);
 }
 
 /**

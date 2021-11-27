@@ -21,6 +21,7 @@ C_FILES += main.cpp
 C_FILES += teatro_search.cpp
 C_FILES += teatro_menu.cpp
 C_FILES += teatro_servicio.cpp
+C_FILES += teatro_sort.cpp
 
 # Utiliza TABS en las reglas
 all:

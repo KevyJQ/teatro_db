@@ -1,5 +1,8 @@
-23:Teatro Aldama
-24:Teatro Insurgentes
+123:Teatro Aldama
+244:Teatro Insurgentes
 34:Teatro Tepeyac
-45:Teatro Broadway
-46:Teatro Buenavista
+5:Teatro Broadway
+6:Teatro Buenavista
+8:Teatro Vasconcelos
+70:Teatro Zapata
+23:Teatro Juárez

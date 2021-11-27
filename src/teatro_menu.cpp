@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include "teatro_menu.h"
 
 using namespace std;
@@ -11,7 +12,13 @@ bool TeatroMenu::validar_opcion(int opcion){
 //     return true;  
 //   }
 //   return false;
-  return opcion >= BUSQUEDA_POR_ID && opcion <= SALIR;
+  cout << "option " << opcion << endl;
+  if(opcion > 0 || opcion <5){
+    return opcion >= BUSQUEDA_POR_ID && opcion <= SALIR;
+  }else{
+    cout<<"Opcion erronea";
+    return false;
+  }
 }
 
 void TeatroMenu::mostrar_menu(){
@@ -39,10 +46,14 @@ void TeatroMenu::procesar(){
 
     bool isValid = false;
     while (!isValid) {
-      cout<<"Dame tu opcion:";
+      // TODO: validate invalid outputs
+      cout << "Dame tu opcion: ";
       cin >> opcion;
-      cout << "\n";
+      // clear buffer before taking
+      // new line
+      // cin.ignore(numeric_limits<streamsize>::max());
       isValid = this->validar_opcion(opcion);
+      //cout << "isValid is " << isValid << endl;
     }
 
     switch (opcion) {
@@ -62,6 +73,8 @@ void TeatroMenu::procesar(){
         cout<<"\n..........................\n\n";
         salir = true;
         break;
+      default:
+        cout<< "Opcion erronea"<<endl;
     }
   }
 }

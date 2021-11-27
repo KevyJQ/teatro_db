@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 #define TEATRO_DB_ARCHIVO "TEATRO_DATABASE.bin"
 
 void TeatroDb::guardar_teatro(Teatro teatros[],int size){
@@ -33,57 +32,59 @@ void TeatroDb::guardar_teatro(Teatro teatros[],int size){
 	}
 }
 
+/*
+ * Regresa {@code true} si se proceso la linea sin error,
+ * de otra manera regresa {@code false}.
+ */
+
+bool TeatroDb::procesar_linea(char *ptrLinea,   
+                                 vector<Teatro> *ptrTeatros){
+  // 3. Tokenizar cada line.
+  char *token = strtok(ptrLinea, ":");
+  int id;
+  char *name = NULL;
+  if (token != NULL) {
+    id = atoi(token);
+    token = strtok(NULL, "\n");
+    if (token != NULL) {
+      name = token;
+    }
+  }
+  
+  if (name == NULL) {
+    return false;
+  }
+
+  Teatro *ptrTeatro = new Teatro(id,name);
+  ptrTeatros->push_back(*ptrTeatro);
+  delete ptrTeatro;
+  return true;
+}
+
 void TeatroDb::populate_teatros(vector<Teatro> *ptrTeatros) {
   // 1. Leer el archivo que contiene los teatros
   string line;
   ifstream myfile("teatros.txt");
-  // 2. Imprimir cada linea del archivo.
-  char *ptr = new char[line.length() + 1];  
-  cout << endl;
-  if (myfile.is_open()) {
-    while (getline(myfile, line)) {
-      char *ptr = new char[line.length() + 1];
-      strcpy(ptr, line.c_str());
-      //cout << ptr << endl; //Prueba de impresion
-      strcpy(ptr, line.c_str());
-      char *token = strtok(ptr, ":");
-      while (token != NULL) {
-        //cout << "Token: " << token << endl;
-        token = strtok(NULL, " ");
-      }
-      delete[] ptr;
-    }
-    myfile.close();
-  } else {
-    cout << "Unable to open the file";
+
+  if (!myfile.is_open()) {
+    cout << "No se pudo abrir el archivo " << endl;
+    exit (EXIT_FAILURE);
   }
-  // 3. Tokenizar cada line.
 
-  //char *token = strtok(ptr, ":");
-  // 4. Crear un objecto teatro con los tokens
-  
-  // 5. Hacer push del teatro en el vector.
-  // char *st = "456";
-  // int = atoi (buffer);
+  // 2. Imprimir cada linea del archivo.
+  char *ptr = new char[line.length() + 1];
+  while (getline(myfile, line)) {
+    strcpy(ptr, line.c_str()); // 45:Teatro Broadway
+    if (!this->procesar_linea(ptr, ptrTeatros)) {
+      cout << "Formato de archivo incorrecto!! " << endl;
+      delete[] ptr;
+      myfile.close();
+      exit (EXIT_FAILURE);
+    }
+  }
 
-
-  cout<< "..Llenado teatros.." << endl;
-  cout<<"\nBuilding database"<<endl;
-
-  char nombre1[NOMBRE_SIZE] = "Teatro Siqueiros Ptr";
-	Teatro *ptrTeatro1 = new Teatro(20,nombre1);
-
-  char nombre2[NOMBRE_SIZE] = "Teatro Aldama Ptr";
-	Teatro *ptrTeatro2 = new Teatro(22,nombre2);
-  
-  char nombre3[NOMBRE_SIZE] = "Teatro Siqueiros";
-	Teatro *ptrTeatro3 = new Teatro(23,nombre3);
-
-  char nombre4[NOMBRE_SIZE] = "Teatro Aldama";
-	Teatro *ptrTeatro4 = new Teatro(26,nombre4);
-
-  ptrTeatros->push_back(*ptrTeatro1);
-  ptrTeatros->push_back(*ptrTeatro2);
-  ptrTeatros->push_back(*ptrTeatro3);
-  ptrTeatros->push_back(*ptrTeatro4);// Referenciar mienbros de la clase
- }
+  // Regresando la memoria que se pidio. Si no se regresa,
+  // va haber memory leaks.
+  delete[] ptr;
+  myfile.close();
+}
