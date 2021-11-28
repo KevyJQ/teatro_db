@@ -17,7 +17,7 @@ void TeatroServicio::populateTeatros(){
   TeatroDb teatro_db;
   teatro_db.populate_teatros(&this->teatros);
   TeatroSort teatroSort;
-  teatroSort.bubble_sort(&this->teatros);
+  teatroSort.quick_sort(&this->teatros);
 }
 
 /**
