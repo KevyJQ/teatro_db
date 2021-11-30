@@ -1,10 +1,13 @@
 #include "teatro_servicio.h"
 
 #include <iostream>
+#include <string.h>
 #include "teatro_search.h"
 #include "teatro.h"
 #include "teatro_db.h"
 #include "teatro_sort.h"
+#include  <bits/stdc++.h>
+#include <limits>
 
 using namespace std;
 
@@ -18,6 +21,10 @@ void TeatroServicio::populateTeatros(){
   teatro_db.populate_teatros(&this->teatros);
   TeatroSort teatroSort;
   teatroSort.quick_sort(&this->teatros);
+  for (int i = 0; i < this->teatros.size(); i++ ) {
+    // map[p2] = &p2 
+    this->mapTeatros[this->teatros[i]] = &this->teatros[i];   
+  }
 }
 
 /**
@@ -46,8 +53,25 @@ void TeatroServicio::buscarPorId(){
 /**
  * Hace busqueda por Nombre.
  */
-void TeatroServicio::buscarPorNombre(){
-  cout<< "..Busqueda por Nombre.."<< endl;
+void TeatroServicio::buscarPorNombre(){  
+  char name[NOMBRE_SIZE];
+  cout<<"Que nombre de Teatro deseas buscar?: " << endl;
+  
+  cin.clear();
+  cin.sync();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  while (!cin.getline (name, NOMBRE_SIZE)) {
+    cout << "Nombre invalido" << endl;
+  }
+  
+  Teatro searchTeatro(1, name);
+  if (this->mapTeatros.count(searchTeatro) > 0) {
+    cout << "Encontrado!!!!" << endl;
+    Teatro* encontrado = this->mapTeatros[searchTeatro];
+    encontrado->print();
+  } else {
+    cout << "No se encontro el teatro:" << name << endl;
+  }
 }
 
 void TeatroServicio::mostrar_all_teatros(){
@@ -56,7 +80,10 @@ void TeatroServicio::mostrar_all_teatros(){
   //cout << "Usando vectores " << endl;
   //for (Teatro teatro : teatros)
         //teatro.print();
-  for (int i = 0; i < this->teatros.size(); i++)
+  for (int i = 0; i < this->teatros.size(); i++) {
         this->teatros[i].print();
+  }
 }
+
+
 

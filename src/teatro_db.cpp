@@ -64,7 +64,7 @@ bool TeatroDb::procesar_linea(char *ptrLinea,
 void TeatroDb::populate_teatros(vector<Teatro> *ptrTeatros) {
   // 1. Leer el archivo que contiene los teatros
   string line;
-  ifstream myfile("teatros.txt");
+  ifstream myfile("teatros.txt");//Lectura del documento
 
   if (!myfile.is_open()) {
     cout << "No se pudo abrir el archivo " << endl;
@@ -88,3 +88,4 @@ void TeatroDb::populate_teatros(vector<Teatro> *ptrTeatros) {
   delete[] ptr;
   myfile.close();
 }
+

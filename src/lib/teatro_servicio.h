@@ -11,7 +11,12 @@ using namespace std;
 class TeatroServicio {
   private:
     vector<Teatro> teatros;
-    TeatroSearch ts;   
+    TeatroSearch ts;  
+    // Declarar map con el comparator a usar.
+    // map<key, value, comparator>
+    // key - Teatro
+    // value - Teatro*
+    map<Teatro, Teatro*, TeatroCompararPorNombre> mapTeatros;
   public:
     void populateTeatros();
     void buscarPorId();
